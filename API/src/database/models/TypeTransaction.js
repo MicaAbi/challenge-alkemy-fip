@@ -18,5 +18,19 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     const TypeTransaction = sequelize.define(alias, cols, config);
+
+    // TypeTransaction model associations
+    TypeTransaction.associate = function(models) {
+        TypeTransaction.hasMany(models.Transaction, {
+            as: "transactions",
+            foreignKey: "type_id"
+        });
+
+        TypeTransaction.hasMany(models.Category, {
+            as: "categories",
+            foreignKey: "type_id"
+        });
+    };
+
     return TypeTransaction;
 };

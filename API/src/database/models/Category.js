@@ -21,5 +21,14 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     const Category = sequelize.define(alias, cols, config);
+
+    // Category model associations
+    Category.associate = function(models) {
+        Category.belongsTo(models.TypeTransaction, {
+            as: "types",
+            foreignKey: "type_id"
+        })
+    };
+
     return Category;
 };

@@ -33,5 +33,19 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     const Transaction = sequelize.define(alias, cols, config);
+
+    // Transaction model associations
+    Transaction.associate = function(models) {
+        Transaction.belongsTo(models.User, {
+            as: "users",
+            foreignKey: "user_id"
+        });
+
+        Transaction.belongsTo(models.TypeTransaction, {
+            as: "types",
+            foreignKey: "type_id"
+        })
+    };
+
     return Transaction;
 };
