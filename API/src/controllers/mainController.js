@@ -1,6 +1,7 @@
 const mainController = {
     index: (req, res) => {
-        res.send('Welcome home')
+        res.send('Welcome home');
+        console.log('Hello World!');
     }
 }
 

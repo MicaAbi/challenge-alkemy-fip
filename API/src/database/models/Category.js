@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     // Category model associations
     Category.associate = function(models) {
         Category.belongsTo(models.TypeTransaction, {
-            as: "types",
+            as: "type",
             foreignKey: "type_id"
         })
     };
